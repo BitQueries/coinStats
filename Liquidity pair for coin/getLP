@@ -1,0 +1,15 @@
+query  {  
+  ethereum(network:bsc) {
+    dexTrades(
+      baseCurrency: {is:"` + COIN ADDRESS VARIABLE HERE + `"}
+      options: {desc: "trades"}
+    ) {
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+     trades:count
+    }
+  }
+}
