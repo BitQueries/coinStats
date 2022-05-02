@@ -76,8 +76,9 @@ USDT for quoteCurrency
 "asc:" stands for ascending order
 "desc:" stands for descending order
 date: {since: "", till: ""} from time to time (can be added null if you dont want to use the one or removed enitrely) The time format used is ISO 8601
+"limit:" stands for results displayed - use number above 1 for more than 1 result if you use combined "since:" and "till:"
 
-sample Vanilla JS code retrieving the now time in ISO 8601:
+sample Vanilla JS code retrieving the now time in ISO 8601 format:
 
 var now = new Date().toISOString();
 
