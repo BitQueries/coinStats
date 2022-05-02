@@ -1,0 +1,2 @@
+# coinStats
+Various coinstats queries
