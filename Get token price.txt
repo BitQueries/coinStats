@@ -1,0 +1,194 @@
+Query for the latest price record for given coin.
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 1, asc: "block.timestamp.time"}
+	  date: {since: "2022-05-01T10:07:34.839Z", till: "2022-05-01T20:07:34.839Z"}
+      exchangeName: {in:  ["Pancake" "Pancake v2"]}
+      baseCurrency: {is: "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
+
+
+=============================
+
+Data response:
+
+
+Block:
+Timestamp for the retrieved block data.
+
+Base currency (BNB for example):
+Address
+Symbol
+
+
+Quote currency (USDT for example):
+Address
+Symbol
+
+Quote price:
+Price of the quote currency against the base currency.
+In other words, how many tokens of the quote currency you will receive for 1 token from the base currency.
+
+
+=============================
+
+Output format:
+
+json.data.ethereum.dexTrades[a].block.timestamp.time;
+json.data.ethereum.dexTrades[a].baseCurrency.symbol;
+json.data.ethereum.dexTrades[a].baseCurrency.address;
+json.data.ethereum.dexTrades[a].quoteCurrency.symbol;
+json.data.ethereum.dexTrades[a].quoteCurrency.address;
+json.data.ethereum.dexTrades[a].quotePrice;
+
+
+=============================
+
+
+Current used currencies are:
+Cake for baseCurrency
+USDT for quoteCurrency
+
+"asc:" stands for ascending order
+"desc:" stands for descending order
+date: {since: "", till: ""} from time to time (can be added null if you dont want to use the one or removed enitrely) The time format used is ISO 8601
+
+sample Vanilla JS code retrieving the now time in ISO 8601:
+
+var now = new Date().toISOString();
+
+
+For "options:" limit is set at 1 result for the latest block in descending order.
+If you set "asc:" instead of "desc:", you will get the first price record for that currency in ascending order.
+If you set *"limit:" greater than 1 you will receive data for all the previous/next price records over time depending on the orders you chose.
+
+*Please mind that there is current limit for 10 000 records for 1 query (this bitquery policy can change in time).
+
+=============================
+
+Variables can be used for easier interaction.
+Example:
+
+baseCurrency: {is: " `+ YOUR VARIABLE ADDRESS HERE +` "}
+quoteCurrency: {is: " `+ YOUR VARIABLE ADDRESS HERE +` "}
+
+=============================
+
+Sample function written in Vanilla JS:
+
+async function checkQuery() {
+	
+	
+	var query = `
+		{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 1, desc: "block.timestamp.time"}
+      exchangeName: {in:  ["Pancake v2"]}
+      baseCurrency: {is: "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
+
+	
+	`;
+	
+	const url = "https://graphql.bitquery.io/";
+	const opts = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+		
+		
+		
+      "X-API-KEY": "////// YOUR API KEY HERE ////////"
+	  
+	  
+    },
+    body: JSON.stringify({
+        query
+    })
+};
+	
+	fetch(url, opts).then(
+	function(response) {
+	  if (response.status !== 200) {
+		
+		console.log('Looks like there was a problem. Status Code: ' +
+		  response.status);
+		return;
+	  }
+  
+  // response
+  response.json().then(function(json) {
+	  
+	  //Console log response data
+	  console.log(json);
+	  
+		for(let a=0; a<json.data.ethereum.dexTrades.length; a++) {
+		
+		//Do something with the data
+		json.data.ethereum.dexTrades[a].block.timestamp.time;
+		json.data.ethereum.dexTrades[a].baseCurrency.symbol;
+		json.data.ethereum.dexTrades[a].baseCurrency.address;
+		json.data.ethereum.dexTrades[a].quoteCurrency.symbol;
+		json.data.ethereum.dexTrades[a].quoteCurrency.address;
+		json.data.ethereum.dexTrades[a].quotePrice;
+			
+		}
+	
+  });
+  
+  
+}
+).catch(function(err) {
+	alert('Error');
+console.log('Fetch Error :', err);
+});
+	
+	
+}
