@@ -1,0 +1,39 @@
+Get coin circulating supply.
+
+In order to get the current coin supply we need to check the total minted and burned tokens and calculate the difference between them respectively.
+This query also works for liquidity pairs and is useful to calculate if there are burned liquidity tokens.
+You can use the "date:" option to check mints and burns over period of time.
+The "gt:" parameter in "amount:" means "Greater than"
+In this case "amount" and "gt" can be omitted.
+
+Please be aware that some smart contracts don't emit events and there can be unrelevant data presented. This happens rarely.
+This query can be used to get data for multiple addresses, just use the array syntax:
+
+currency: {in: ["COIN1","COIN2","COIN3"]
+
+
+
+Query:
+
+
+{
+  ethereum(network: bsc) {
+    transfers(date: {since: null, till: null}, amount: {gt: 0}) {
+      burned: amount(
+        calculate: sum
+        receiver: {in: ["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"]}
+      )
+      minted: amount(
+        calculate: sum
+        sender: {in: ["0x0000000000000000000000000000000000000000"]}
+      )
+      currency(currency: {in: ["`+DESIRED COIN ADDRESS VARIABLE HERE+`"]}) {
+        symbol
+        name
+        address
+      }
+    }
+  }
+}
+
+
