@@ -1,0 +1,30 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 1, desc: "block.timestamp.time"}
+	  date: {till: " `+ CURRENT TIME IN ISO8601 FORMAT +` "}
+      exchangeName: {in:  ["Pancake" "Pancake v2"]}
+      baseCurrency: {is: " `+LIQUIDITY TOKEN VARIABLE HERE+` "}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
