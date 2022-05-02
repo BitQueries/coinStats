@@ -1,0 +1,30 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 1, desc: "block.timestamp.time"}
+	  date: {till: "`+INSERT VARIABLE WITH CURRENT TIME HERE+`"}
+      exchangeName: {in:  ["Pancake v2"]}
+      baseCurrency: {is: "`+INSERT DESIRED COIN HERE+`"}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
