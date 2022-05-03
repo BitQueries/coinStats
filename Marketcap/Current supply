@@ -1,0 +1,19 @@
+{
+  ethereum(network: bsc) {
+    transfers(date: {since: null, till: null}, amount: {gt: 0}) {
+      burned: amount(
+        calculate: sum
+        receiver: {in: ["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"]}
+      )
+      minted: amount(
+        calculate: sum
+        sender: {in: ["0x0000000000000000000000000000000000000000"]}
+      )
+      currency(currency: {in: ["`+DESIRED COIN ADDRESS VARIABLE HERE+`"]}) {
+        symbol
+        name
+        address
+      }
+    }
+  }
+}
