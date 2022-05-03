@@ -1,0 +1,18 @@
+{
+  ethereum(network: bsc) {
+    address(
+      address: {in: ["HOLDER1","HOLDER2","HOLDER3"]}
+    ) {
+      balances(
+        currency: {is: "THE CURRENCY WE PULLED ADDRESSES FROM"}
+      ) {
+        value
+        currency {
+          name
+          symbol
+          address
+        }
+      }
+    }
+  }
+}
