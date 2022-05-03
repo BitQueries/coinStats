@@ -1,0 +1,22 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limitBy: {each: "transaction.txFrom.address" limit:1}}
+      date: {since: null, till:"INSERT NOW TIME HERE"}
+      baseCurrency: {is: "INSERT DESIRED TOKEN ADDRESS HERE"}
+    ) {
+      exchange {
+        fullName
+      }
+      transaction {
+        txFrom {
+          address
+        }
+      }
+      baseCurrency {
+        symbol
+      }
+    }
+  }
+}
+
