@@ -1,0 +1,32 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 5, desc: "timeInterval.minute"}
+      time: {since: "INSERT DESIRED TIME HERE", till: "INSERT DESIRED TIME HERE"}
+      exchangeName: {is: "Pancake v2"}
+      baseCurrency: {is: "INSERT DESIRED CURRENCY HERE (BNB FOR EXAMPLE)"}
+      quoteCurrency: {is: "INSERT DESIRED STABLE COIN HERE (USDT PREFERABLE)"}
+    ) {
+      timeInterval {
+        minute(count:1)
+      }
+      baseCurrency {
+        symbol
+        address
+      }
+      baseAmountTraded: baseAmount
+      quoteCurrency {
+        symbol
+        address
+      }
+      quoteAmountTraded: quoteAmount
+      totalTrades: count
+      priceInQuotedCurrency: quotePrice
+      max_price: quotePrice(calculate: maximum)
+      min_price: quotePrice(calculate: minimum)
+      median_price: quotePrice(calculate: median)
+      open_price: minimum(of: block, get: quote_price)
+      close_price: maximum(of: block, get: quote_price)
+    }
+  }
+}
