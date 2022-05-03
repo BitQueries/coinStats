@@ -1,3 +1,34 @@
+Instructions for the OHLC query
+
+You can retrieve data for various time intervals changing few parameters:
+
+
+In the "options: {limit: 5, desc: "timeInterval.minute"}" you can change "timeInterval.minute" with  timeInterval.hour, timeInterval.day, timeInterval.month
+In order the query to work you must also change the following respectively
+
+      timeInterval {
+        minute(count:1)
+      }		FOR MINUTES
+      
+      timeInterval {
+        hour(count:1)
+      }		FOR HOURS
+      
+      timeInterval {
+        month(count:1)
+      }		FOR MONTHS
+
+You can change the "count:" setting for the desired time period.
+Example : timeInterval {
+        minute(count:5)
+      }		FOR 5 MIN OHLC DATA
+
+
+
+
+
+
+
 Query for the latest price record for given coin.
 
 {
