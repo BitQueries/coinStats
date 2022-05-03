@@ -1,0 +1,69 @@
+Get all holders for contract.
+
+Bitquery currently don't support holders API.
+
+The holders can be retrieved with few queries and filtering.
+
+
+First you must get all unique users interacted with the contract.
+Store all in array and filter if there are repetitive results.
+Then in the second query for balances check,in "address:" field enter all of the filtered users.
+If the balances of user is >0 then this is current holder.
+Store again the results in array and filter all users with balance >0 for the desired token.
+This way we have all of the current holders of the coin.
+
+
+1.Get all of the unique senders and receivers for the desired token.
+
+Query:
+
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limitBy: {each: "transaction.txFrom.address" limit:1}}
+      date: {since: null, till:"INSERT NOW TIME HERE"}
+      baseCurrency: {is: "INSERT DESIRED TOKEN ADDRESS HERE"}
+    ) {
+      exchange {
+        fullName
+      }
+      transaction {
+        txFrom {
+          address
+        }
+      }
+      baseCurrency {
+        symbol
+      }
+    }
+  }
+}
+
+
+
+2.Get current balances for all holders to see if they hold the desired token.
+
+
+Query:
+
+
+
+{
+  ethereum(network: bsc) {
+    address(
+      address: {in: ["HOLDER1","HOLDER2","HOLDER3"]}
+    ) {
+      balances(
+        currency: {is: "0x7f3765b3f9095554fc5d10c3ef60e20d7c6840d5"}
+      ) {
+        value
+        currency {
+          name
+          symbol
+          address
+        }
+      }
+    }
+  }
+}
