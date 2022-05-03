@@ -1,0 +1,77 @@
+Calculating the total market cap of coin.
+
+
+There is no direct query to take market cap of token.
+In order to calculate the market cap of coin, we must take coin's current price and multiply it by the current circulating supply.
+
+
+Current market cap formula:
+
+CURRENT_MARKET_CAP=CURRENT_PRICE_OF_COIN*TOTAL_CIRCULATING_SUPPLY
+
+
+Use the this queries or combine with some of the previous ones.
+Good practice for API points saving is to store all the data in array and then compare and extract what you need from there.
+
+
+Queries:
+
+
+1.Get coin current price in USDT:
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 1, desc: "block.timestamp.time"}
+	  date: {till: "`+INSERT VARIABLE WITH CURRENT TIME HERE+`"}
+      exchangeName: {in:  ["Pancake v2"]}
+      baseCurrency: {is: "`+INSERT DESIRED COIN HERE+`"}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
+
+
+
+
+2.Get coin current circulating supply:
+
+
+{
+  ethereum(network: bsc) {
+    transfers(date: {since: null, till: null}, amount: {gt: 0}) {
+      burned: amount(
+        calculate: sum
+        receiver: {in: ["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"]}
+      )
+      minted: amount(
+        calculate: sum
+        sender: {in: ["0x0000000000000000000000000000000000000000"]}
+      )
+      currency(currency: {in: ["`+DESIRED COIN ADDRESS VARIABLE HERE+`"]}) {
+        symbol
+        name
+        address
+      }
+    }
+  }
+}
