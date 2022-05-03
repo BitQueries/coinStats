@@ -1,0 +1,16 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      date: {since:"FROM DESIRED TIME HERE" till:"TO DESIRED TIME HERE"}
+      baseCurrency: { is: "DESIRED COIN HERE"}
+    ) {
+     baseCurrency {
+      name
+      symbol
+      address
+    }
+      bnbVolume: tradeAmount(in:BNB)
+      usdVolome: tradeAmount(in: USD)
+    }
+  }
+}
