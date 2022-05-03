@@ -1,0 +1,26 @@
+Get daily volume for coin.
+
+
+This is simple query retrieving the volume of token for desired time period.
+Mind that bitquery's service may have delayed and innacurate data for some of the tokens (especially shitcoins with low volumes).
+
+"bnbVolume:" and "usdVolome:" are aliases that represent the volume for the selected time period in BNB and USD respectively.
+Aliases can be changed with any desirable name for easier readability.
+
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      date: {since:"PREVIOUS DAY" till:"NOW DAY"}
+      baseCurrency: { is: "DESIRED CURRENCY"}
+    ) {
+     baseCurrency {
+      name
+      symbol
+      address
+    }
+      bnbVolume: tradeAmount(in:BNB)
+      usdVolome: tradeAmount(in: USD)
+    }
+  }
+}
