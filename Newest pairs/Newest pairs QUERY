@@ -1,0 +1,28 @@
+query {
+  ethereum(network: bsc){
+    smartContractEvents(
+      options: {desc:"block.height", limit:100}
+      smartContractEvent: {is: "PairCreated"}){
+      
+     block {
+        height
+        timestamp {
+          time(format: "%H:%M:%S")
+        }
+      }
+      
+      transaction {
+        hash
+      }
+
+      smartContract {
+        address{address}
+      }
+      arguments {
+        index
+        argument
+        value
+      }
+    }
+  }
+}
