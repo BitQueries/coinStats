@@ -1,5 +1,15 @@
 Get newest pairs for chains supported by Bitquery.
 
+Be aware that there will be delays of few minutes.
+
+Tips:
+The information must be added in array then filtered, because token0 and token1 are different.
+Get the most used coins addresses which coins are paired with for each chain, for example WBNB,WETH,WAVAX,WMATIC,USDT,BUSD,USDC.
+Then compare the most used coins for liquidity with token1 and token0 to distinguish which is the coin address which you search for (not the liquidity one).
+
+
+
+
 For "ethereum(network:)" you can use variable for the desired network.
 
 
@@ -18,6 +28,15 @@ ethereum(network:klaytn)
 ethereum(network:celo_baklava)
 
 =========================================
+
+The following returns the monitored factory address for the respected chain.
+
+smartContract {
+        address{address}
+      }
+      
+=========================================
+
 
 Query:
 
