@@ -1,0 +1,51 @@
+Get newest pairs for chains supported by Bitquery.
+
+For "ethereum(network:)" you can use variable for the desired network.
+
+
+=========================================
+
+Supported networks, names and syntax:
+
+ethereum(network:bsc)
+ethereum(network:ethereum)
+ethereum(network:avalanche)
+ethereum(network:matic)
+ethereum(network:fantom)
+ethereum(network:ethclassic)
+ethereum(network:velas)
+ethereum(network:klaytn)
+ethereum(network:celo_baklava)
+
+=========================================
+
+Query:
+
+query {
+  ethereum(network: NETWORK NAME VARIABLE HERE){
+    smartContractEvents(
+      options: {desc:"block.height", limit:100}
+      smartContractEvent: {is: "PairCreated"}){
+      
+     block {
+        height
+        timestamp {
+          time(format: "%H:%M:%S")
+        }
+      }
+      
+      transaction {
+        hash
+      }
+
+      smartContract {
+        address{address}
+      }
+      arguments {
+        index
+        argument
+        value
+      }
+    }
+  }
+}
