@@ -1,0 +1,149 @@
+Wallet tracker query and price calculation.
+
+
+Trade history part:
+
+Trade history - 1 query total.
+Trade history with profit/loss calculation - 2 queries total (including the above one).
+
+
+First query will be used to retrieve information like trade occur time/token name/dex name/trade amount/price at the trade time/gas fees/tx hash.
+Second query will be used to fetch the current price for tokens data and then compare it with the data we already have, then calculate % profit/loss.
+
+===============================
+
+Wallet current tokens holdings:
+
+1 query is required for that purpose.
+
+===============================
+
+Proposal:
+Make filter for parasite tokens like ones that appear from nothing in your wallet, because their value appear to be thousands of dollars but in reality they are fraudulent their value is zero.
+Database for the fake tokens must be created and updated regularly.
+
+===============================
+
+1. Get trade history
+
+Query:
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 10, desc: "block.height"}
+      date: {since: "2022-04-05"}
+      makerOrTaker: {is: "0xa7716873Ad29A85072aa463AcD469354eD3889a6"}
+    ) {
+     
+      smartContract {
+        address {
+          address
+        }
+        
+        contractType
+        currency {
+          name
+        }
+      }
+       exchange {
+        name
+      }
+      tradeIndex
+      block {
+        height
+        timestamp{
+          time(format: "%Y-%m-%dT%H:%M:%SZ")
+        }
+      }
+      
+      buyCurrency {
+        symbol
+        address
+      }
+      boughtCurrency: sellCurrency {
+        symbol
+        address
+      }
+      amountBought: sellAmount
+      fundsSpentInBnb: buyAmount
+      fundsSpentInUsd: tradeAmount(in: USD)
+      priceAgainstPairedToken: price(calculate:maximum)
+      gasSpentInUsd: gasValue(in:USD)
+      gasSpentInBnb: gasValue
+      transaction {
+        hash
+        gas
+      }
+    }
+  }
+}
+
+
+
+
+2.Get current tokens price
+
+Query:
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {desc: "block.timestamp.time", limitBy:{each: "baseCurrency.address", limit:1}}
+	  date: {since:"2022-05-07T16:43:44.130Z", till: "2022-05-07T18:43:44.130Z"}
+      exchangeName: {in:  ["Pancake v2"]}
+      baseCurrency: {in: ["0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82","0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"]}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
+
+
+3.Wallet current holdings
+
+Query:
+
+{
+  ethereum (network:bsc){
+    address(
+      address: {is: "DESIRED WALLET ADDRESS"}){
+      balances(
+      time: {till: "NOW TIME"}
+    	
+      ) {
+        currency {
+          symbol
+          address
+        }
+        value
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
