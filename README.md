@@ -45,6 +45,7 @@ Filters:
 Limits:
 
 Currently bitquery don't accept more than 10000 results for 1 query.
+
 "limit:" filter must be between 1 and 10000
 
 
