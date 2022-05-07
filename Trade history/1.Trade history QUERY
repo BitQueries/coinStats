@@ -1,0 +1,50 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: DESIRED LIMIT NUMBER HERE FROM 1 TO 10000, desc: "block.height"}
+      date: {since: "DESIRED TIME HERE"}
+      makerOrTaker: {is: "WALLET ADDRESS HERE"}
+    ) {
+     
+      smartContract {
+        address {
+          address
+        }
+        
+        contractType
+        currency {
+          name
+        }
+      }
+       exchange {
+        name
+      }
+      tradeIndex
+      block {
+        height
+        timestamp{
+          time(format: "%Y-%m-%dT%H:%M:%SZ")
+        }
+      }
+      
+      buyCurrency {
+        symbol
+        address
+      }
+      boughtCurrency: sellCurrency {
+        symbol
+        address
+      }
+      amountBought: sellAmount
+      fundsSpentInBnb: buyAmount
+      fundsSpentInUsd: tradeAmount(in: USD)
+      priceAgainstPairedToken: price(calculate:maximum)
+      gasSpentInUsd: gasValue(in:USD)
+      gasSpentInBnb: gasValue
+      transaction {
+        hash
+        gas
+      }
+    }
+  }
+}
