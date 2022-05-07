@@ -18,13 +18,21 @@ Networks:
 In order to fetch result for the desired network, parameter after "network:" field must be changed respectively as follows:
 
 ethereum(network:bsc) for Binance smart chain
+
 ethereum(network:ethereum)  for Ethereum
+
 ethereum(network:avalanche) for Avalanche
+
 ethereum(network:matic) for Polygon
+
 ethereum(network:fantom) for Fantom
+
 ethereum(network:ethclassic) for Ethereum classic
+
 ethereum(network:velas) for Velas
+
 ethereum(network:klaytn) for Klaytn
+
 ethereum(network:celo_baklava) for Celo
 
 
