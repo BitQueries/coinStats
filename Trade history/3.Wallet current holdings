@@ -1,0 +1,17 @@
+{
+  ethereum (network:bsc){
+    address(
+      address: {is: "DESIRED WALLET ADDRESS HERE"}){
+      balances(
+      time: {till: "NOW TIME HERE"}
+    	
+      ) {
+        currency {
+          symbol
+          address
+        }
+        value
+      }
+    }
+  }
+}
