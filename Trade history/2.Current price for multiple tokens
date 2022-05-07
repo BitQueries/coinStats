@@ -1,0 +1,30 @@
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {desc: "block.timestamp.time", limitBy:{each: "baseCurrency.address", limit:1}}
+	  date: {since:"DESIRED TIME HERE (PREFERABLE FEW MINUTES OR HOUR BEFORE NOW TIME FOR FASTER RESPONSE)", till: "NOW TIME HERE"}
+      exchangeName: {in:  ["Pancake v2"]}
+      baseCurrency: {in: ["COIN1","COIN2","COIN3"]}
+      quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
+    ) {
+      
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      
+      baseCurrency {
+        symbol
+        address
+      }
+      
+      quoteCurrency {
+        symbol
+        address
+      }
+      
+      quotePrice
+    }
+  }
+}
