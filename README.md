@@ -65,6 +65,8 @@ In "date:" - "since:" and "till:" additional filters can be applied for more pre
 date:{since: "ISO8601 time", till: "ISO8601 time"}
 
 
+In options: {limit: 1, desc: "block.timestamp.time"}
+
 "asc:" stands for ascending order
 
 "desc:" stands for descending order
