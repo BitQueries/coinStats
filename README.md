@@ -51,7 +51,7 @@ Currently bitquery don't accept more than 10000 results for 1 query.
 
 =========
 Date:
-=========
+
 
 Date format used in BitQuery is ISO8601
 https://en.wikipedia.org/wiki/ISO_8601
@@ -75,7 +75,7 @@ In options: {limit: 1, desc: "block.timestamp.time"}
 
 =========
 DEX names
-=========
+
 
 In the field - exchangeName: {in:  ["Pancake v2"]}, Pancake v2 can be changed with any of the supported DEXes.
 
