@@ -49,9 +49,9 @@ Currently bitquery don't accept more than 10000 results for 1 query.
 
 "limit:" filter must be between 1 and 10000
 
-=========
-Date:
 
+Date:
+=========
 
 Date format used in BitQuery is ISO8601
 https://en.wikipedia.org/wiki/ISO_8601
@@ -73,9 +73,9 @@ In options: {limit: 1, desc: "block.timestamp.time"}
 "desc:" stands for descending order
 
 
-=========
-DEX names
 
+DEX names
+=========
 
 In the field - exchangeName: {in:  ["Pancake v2"]}, Pancake v2 can be changed with any of the supported DEXes.
 
