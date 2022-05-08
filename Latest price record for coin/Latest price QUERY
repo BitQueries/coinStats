@@ -15,6 +15,12 @@
         }
       }
       
+       poolToken: smartContract {
+        address {
+          address
+        }
+      }
+      
       baseCurrency {
         symbol
         address
