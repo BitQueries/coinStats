@@ -5,7 +5,8 @@
       time: {since: "INSERT DESIRED TIME HERE", till: "INSERT DESIRED TIME HERE"}
       exchangeName: {is: "Pancake v2"}
       baseCurrency: {is: "INSERT DESIRED CURRENCY HERE (BNB FOR EXAMPLE)"}
-      quoteCurrency: {is: "INSERT DESIRED STABLE COIN HERE (USDT PREFERABLE)"}
+      quoteCurrency: {in: ["0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c","0x55d398326f99059ff775485246999027b3197955",
+        "0xe9e7cea3dedca5984780bafc599bd69add087d56", "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82", "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"]}
     ) {
       timeInterval {
         minute(count:1)
