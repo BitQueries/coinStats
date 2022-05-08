@@ -43,13 +43,15 @@ Filters:
 =========================
 
 Limits:
+=========
 
 Currently bitquery don't accept more than 10000 results for 1 query.
 
 "limit:" filter must be between 1 and 10000
 
-
+=========
 Date:
+=========
 
 Date format used in BitQuery is ISO8601
 https://en.wikipedia.org/wiki/ISO_8601
@@ -57,7 +59,6 @@ https://en.wikipedia.org/wiki/ISO_8601
 Vanilla JS code to retrieve now time in ISO 8601 format:
 
 var now = new Date().toISOString();
-
 
 
 
@@ -71,6 +72,30 @@ In options: {limit: 1, desc: "block.timestamp.time"}
 
 "desc:" stands for descending order
 
+
+=========
+DEX names
+=========
+
+In the field - exchangeName: {in:  ["Pancake v2"]}, Pancake v2 can be changed with any of the supported DEXes.
+
+
+Query to retrieve the supported DEXes with aggregated data, change the network name respectively (see above for names):
+
+{
+   ethereum(network:bsc) {
+    dexTrades(
+      date: {since: "2020-01-01"}
+      time: {since: "2022-05-01"}
+    ) {
+      
+      exchange {
+        fullName
+      }
+      
+    }
+  }
+}
 
 
 
