@@ -23,6 +23,7 @@ Example : timeInterval {
         minute(count:5)
       }		FOR 5 MIN OHLC DATA
 
+"poolToken:" gives you the Liquidity address for that coin.
 
 
 
