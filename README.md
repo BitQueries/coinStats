@@ -80,22 +80,18 @@ DEX names
 In the field - exchangeName: {in:  ["Pancake v2"]}, Pancake v2 can be changed with any of the supported DEXes.
 
 
-Query to retrieve the supported DEXes with aggregated data, change the network name respectively (see above for names):
+Query to retrieve the supported DEXes with aggregated data, change the network name respectively (see above for the available network names):
 
 
 {
-
    ethereum(network:bsc) {
-   
     dexTrades(
       date: {since: "2020-01-01"}
       time: {since: "2022-05-01"}
     ) {
-      
       exchange {
         fullName
       }
-      
     }
   }
 }
