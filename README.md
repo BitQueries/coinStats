@@ -84,7 +84,9 @@ Query to retrieve the supported DEXes with aggregated data, change the network n
 
 
 {
+
    ethereum(network:bsc) {
+   
     dexTrades(
       date: {since: "2020-01-01"}
       time: {since: "2022-05-01"}
