@@ -66,6 +66,16 @@ In "date:" - "since:" and "till:" additional filters can be applied for more pre
 date:{since: "ISO8601 time", till: "ISO8601 time"}
 
 
+If you omit "since:" it will fetch all aggregated results to desired time:
+
+date:{till: "ISO8601 time"}
+
+OR omit "till:" to get results from desired time till last record time:
+
+date:{since: "ISO8601 time"}
+
+
+
 In options: {limit: 1, desc: "block.timestamp.time"}
 
 "asc:" stands for ascending order
