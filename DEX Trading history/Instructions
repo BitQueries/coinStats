@@ -83,7 +83,7 @@ LP info Query:
 
 ======================================================================
 
-2.Get all senders to Liquidity pair address (LP) - these are sells.
+2.Get all receivers from Liquidity pair address (LP) - these are buys.
 
 
 Query:
@@ -120,7 +120,7 @@ Query:
 
 ======================================================================
 
-3.Get all receivers from Liquidity pair address (LP) - these are buys.
+3.Get all senders to Liquidity pair address (LP) - these are sells.
 
 Query:
 
@@ -149,3 +149,11 @@ Query:
     }
   }
 }
+
+
+
+
+
+
+
+
