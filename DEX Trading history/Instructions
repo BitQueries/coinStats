@@ -1,0 +1,151 @@
+Trades chart history.
+
+
+
+1.Get lp address for desired coin.
+2.Get token's current price (you already have that from the chart data stored in array) and compare it with the amounts to take usd/bnb spent/bought.
+3.Get all senders to LP (these are sells)
+4.Get all receivers from LP (these are buys)
+5.Compare the fetched information of holder's trades and compare it agains the current token's price to calculate how much they bought/sold in USD/BNB or whatever currency the token is paired with.
+
+
+Steps 1 and 2 can be combined into 1 query.
+
+
+1.You can get Liquidity pair address with the current price/OHLC query on page's loading and store it in array or get only Liquidity pair address info.
+
+Query:
+
+{
+  ethereum(network: bsc) {
+    dexTrades(
+      options: {limit: 5, desc: "timeInterval.minute"}
+      time: {since: "INSERT DESIRED TIME HERE", till: "INSERT DESIRED TIME HERE"}
+      exchangeName: {is: "Pancake v2"}
+      baseCurrency: {is: "INSERT DESIRED CURRENCY ADDRESS HERE"}
+      quoteCurrency: {in: ["0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c","0x55d398326f99059ff775485246999027b3197955",
+        "0xe9e7cea3dedca5984780bafc599bd69add087d56", "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82", "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"]}
+    ) {
+      timeInterval {
+        minute(count:1)
+      }
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+      baseCurrency {
+        symbol
+        address
+      }
+      baseAmountTraded: baseAmount
+      quoteCurrency {
+        symbol
+        address
+      }
+      quoteAmountTraded: quoteAmount
+      totalTrades: count
+      priceInQuotedCurrency: quotePrice
+      max_price: quotePrice(calculate: maximum)
+      min_price: quotePrice(calculate: minimum)
+      median_price: quotePrice(calculate: median)
+      open_price: minimum(of: block, get: quote_price)
+      close_price: maximum(of: block, get: quote_price)
+    }
+  }
+}
+
+
+
+Or get only LP info (not recommended, because more API points are used with 2 queries)
+
+
+LP info Query:
+
+
+{  
+  ethereum(network:bsc) {
+    dexTrades(
+      baseCurrency: {is:"INSERT DESIRED CURRENCY ADDRESS HERE"}
+      options: {desc: "trades"}
+    ) {
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+     
+      trades: count
+    }
+  }
+}
+
+
+======================================================================
+
+2.Get all senders to Liquidity pair address (LP) - these are sells.
+
+
+Query:
+
+{
+  ethereum(network: bsc) {
+    transfers(
+     	options:{desc:"block.timestamp.time"}
+      currency: {is:"DESIRED CURRENCY ADDRESS HERE (IF THE USER CURRENTLY LOOK AT THE BNB CHART, ADD BNB ADDRESS)"}
+      date: {till: "2022-05-08T13:14:23.862Z"}
+      height: {gt: 0}
+      amount: {gt: 0}
+      sender: {in: ["LIQUIDITY PAIR ADDRESS"]}
+    ) {
+      block{
+        timestamp{
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      receiver {
+        address
+      }
+      amount
+      amountInBnb: amount
+      max_date: maximum(of: date)
+      transaction {
+        hash
+        
+      }
+    }
+  }
+}
+
+
+======================================================================
+
+3.Get all receivers from Liquidity pair address (LP) - these are buys.
+
+Query:
+
+{
+  ethereum(network: bsc) {
+    transfers(
+     	options:{desc:"block.timestamp.time"}
+      currency: {is:"DESIRED CURRENCY ADDRESS HERE (IF THE USER CURRENTLY LOOK AT THE BNB CHART, ADD BNB ADDRESS)"}
+      date: {till: "2022-05-08T13:14:23.862Z"}
+      height: {gt: 0}
+      amount: {gt: 0}
+      receiver: {in: ["LIQUIDITY PAIR ADDRESS"]}
+    ) {
+      block{
+        timestamp{
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      sender {
+        address
+      }
+      amount
+      transaction {
+        hash
+      }
+    }
+  }
+}
