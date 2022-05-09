@@ -1,0 +1,25 @@
+{
+  ethereum(network: bsc) {
+    transfers(
+     	options:{desc:"block.timestamp.time"}
+      currency: {is:"DESIRED CURRENCY ADDRESS HERE (IF THE USER CURRENTLY LOOK AT THE BNB CHART, ADD BNB ADDRESS)"}
+      date: {till: "2022-05-08T13:14:23.862Z"}
+      height: {gt: 0}
+      amount: {gt: 0}
+      receiver: {in: ["LIQUIDITY PAIR ADDRESS"]}
+    ) {
+      block{
+        timestamp{
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      sender {
+        address
+      }
+      amount
+      transaction {
+        hash
+      }
+    }
+  }
+}
