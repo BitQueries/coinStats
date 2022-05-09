@@ -2,11 +2,12 @@ Trades chart history.
 
 
 
-1.Get lp address for desired coin.
-2.Get token's current price (you already have that from the chart data stored in array) and compare it with the amounts to take usd/bnb spent/bought.
+1.Get LP address for desired coin.
+2.Get token's current price (you already have that from the chart data if you stored this in array) and compare it with the amounts to take usd/bnb spent/bought.
 3.Get all senders to LP (these are sells)
 4.Get all receivers from LP (these are buys)
-5.Compare the fetched information of holder's trades and compare it agains the current token's price to calculate how much they bought/sold in USD/BNB or whatever currency the token is paired with.
+5.Compare the fetched information of holder's trades and compare it agains the current token's price to calculate how much they bought/sold in USD/BNB
+or whatever currency the token is paired with.
 
 
 Steps 1 and 2 can be combined into 1 query.
