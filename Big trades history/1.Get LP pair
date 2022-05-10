@@ -1,0 +1,21 @@
+You already have that information fetched via the initial token's price query, just store it in array for later use like in this case.
+
+
+Query to get Liquidity pair only (not recommended).
+
+
+{  
+  ethereum(network:DESIRED NETWORK HERE) {
+    dexTrades(
+      baseCurrency: {is:"INSERT DESIRED CURRENCY ADDRESS HERE"}
+      options: {desc: "trades"}
+    ) {
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+      trades: count
+    }
+  }
+}
