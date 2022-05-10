@@ -1,0 +1,73 @@
+Example for data aggregation for all supported DEXes on the Ethereum network for interval of 1 day with 10000 results for trades greater or equal than 10000 $USD.
+
+ {
+  ethereum(network: ethereum) {
+    dexTrades(
+      options: {limit: 10000, desc: "timeInterval.second"}
+      time:{since:"2022-05-09T17:00:09.374Z", till:"2022-05-10T17:00:09.374Z"}
+      tradeAmountUsd: {gteq: 10000}
+      exchangeAddress: {in: ["0x26607ac599266b21d13c7acf7942c7701a8b699c", "0x0f9cb53ebe405d49a0bbdbd291a65ff571bc83e1",
+        "0xf2bda964ec2d2fcb1610c886ed4831bf58f64948", "0x008d9d457ad0a75c83d9a5e2b8e4ce89232b5083",
+        "0x080bf510fcbf18b91105470639e9561022937712", "0x0189c1f3181e4de8e2825a3aa85e40135b607dd4",
+      "0x2f9ec37d6ccfff1cab21733bdadede11c823ccb0","0x18f5e1a28cdc4bad5d19380dc717641eab1f53f1",
+      "0x06364f10b501e868329afbc005b3492902d6c763","0x2109f78b46a789125598f5ad2b7f243751c2934d",
+      "0x378c77c5379ca07bbb5b3506c08a1c769dec91c2","0x7c66550c9c730b6fdd4c03bc2e73c5462c5f7acc",
+      "0x3a8414b08ffb128cf1a9da1097b0454e0d4bfa8f","0x0423ba84bd3dd01c3729738d4de0e5f2493f444f",
+      "0x5b255e213bcce0fa8ad2948e3d7a6f6e76472db8","0x001b6450083e531a5a7bf310bd2c1af4247e23d4",
+      "0x0002e63328169d7feea121f1e32e4f620abf0352","0x080bf510fcbf18b91105470639e9561022937712",
+      ]}
+    ) {
+      timeInterval {
+        second
+      }
+      exchange {
+        name
+        address {
+          address
+        }
+      }
+      tradeTransaction: transaction {
+        initiator: txFrom {
+          address
+        }
+        hash
+      }
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+          unixtime
+        }
+      }
+     
+      buyCurrency {
+        symbol
+        address
+      }
+       buyAmount
+      
+      sellCurrency {
+        symbol
+        address
+      }
+      sellAmount
+      tradeAmountInUsd: tradeAmount(in: USD)
+      poolContract:smartContract {
+         address {
+          address
+        }
+      }
+      makerContract: maker {
+       address
+      }
+      
+      baseCurrency {
+        address
+        symbol
+        decimals
+        tokenType
+      }
+      baseAmount
+      side
+    }
+  }
+}
