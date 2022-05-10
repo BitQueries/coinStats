@@ -1,0 +1,20 @@
+{
+   ethereum(network: DESIRET NETWORK NAME) {
+    dexTrades(
+      options:{
+        limitBy:{each:"exchange.fullName",limit:1}
+      }
+      date: {since: "DESIRED START DATE"}
+    ) {
+      exchange {
+        fullName
+      }
+      smartContract {
+        address{
+          address
+        }
+      }
+      
+    }
+  }
+}
