@@ -1,0 +1,112 @@
+All networks big trades over specific period of time and amount.
+
+
+
+In order to get swaps for all the networks you will need 2 queries.
+
+1.Get all of the supported DEXes of the current network.
+2.Get all aggregated data for the sait DEXes.
+
+For the aggregated data query, "baseCurrency" corresponds to the currency with which user initiates the swap. In other words the currency with which user buys.
+"buyCurrency" and "sellCurrency" are different and can be confusing.
+
+
+
+1.Get all supported DEX names and addresses:
+
+
+Query:
+
+{
+   ethereum(network: DESIRET NETWORK NAME) {
+    dexTrades(
+      options:{
+        limitBy:{each:"exchange.fullName",limit:1}
+      }
+      date: {since: "DESIRED START DATE"}
+    ) {
+      exchange {
+        fullName
+      }
+      smartContract {
+        address{
+          address
+        }
+      }
+      
+    }
+  }
+}
+
+
+2.Get all aggregated data for current network DEXes:
+
+Query:
+
+ {
+  ethereum(network: ethereum) {
+    dexTrades(
+      options: {limit: NUMBER OF RESULTS UP TO 10000, desc: "timeInterval.second"}
+      time:{since:"DESIRED FROM TIME", till:"DESIRED TO TIME"}
+      tradeAmountUsd: {gteq: USD AMOUNT GREATER OR EQUAL THAN DESIRED NUMBER}
+      exchangeAddress: {in: ["DEX1","DEX2","DEX3"]}
+    ) {
+      timeInterval {
+        second
+      }
+      exchange {
+        name
+        address {
+          address
+        }
+      }
+      tradeTransaction: transaction {
+        initiator: txFrom {
+          address
+        }
+        hash
+      }
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+          unixtime
+        }
+      }
+     
+      buyCurrency {
+        symbol
+        address
+      }
+       buyAmount
+      
+      sellCurrency {
+        symbol
+        address
+      }
+      sellAmount
+      tradeAmountInUsd: tradeAmount(in: USD)
+      poolContract:smartContract {
+         address {
+          address
+        }
+      }
+      makerContract: maker {
+       address
+      }
+      
+      baseCurrency {
+        address
+        symbol
+        decimals
+        tokenType
+      }
+      baseAmount
+      side
+    }
+  }
+}
+
+
+
+
+
