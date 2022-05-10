@@ -36,22 +36,17 @@ ethereum(network:klaytn) for Klaytn
 ethereum(network:celo_baklava) for Celo
 
 
-=========================
+
 
 Filters:
 
 =========================
 
-Limits:
-=========
 
 Currently bitquery don't accept more than 10000 results for 1 query.
 
 "limit:" filter must be between 1 and 10000
 
-
-Date:
-=========
 
 Date format used in BitQuery is ISO8601
 https://en.wikipedia.org/wiki/ISO_8601
