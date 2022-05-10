@@ -1,0 +1,101 @@
+Big trades explorer.
+
+
+To filter the big trades, you need to query for all buyers/sellers over specific period of time and amount.
+You can use the buyers/sellers queries with "gteq:" filter.
+
+When the sender is token's liquidity pair, this mean someone buys from it so receiver's address is the buyer's address.
+When the receiver is token's liquidity pair, this means that someone sells tokens and send them to the pair so the sender's address is the seller's address.
+
+
+First step is to get the Liquidity pair for desired token - you already have that data from the 'get current price' query at the page loading for this coin (if you stored it into array).
+Second step is to get buys/sells with the desired time interval and amount parameters.
+
+
+=================================
+
+1.Get liquidity pair for token (better take the OHLC one and just store LP address into array then take it from there so less API points are consumed):
+
+Query:
+
+{  
+  ethereum(network:DESIRED NETWORK HERE) {
+    dexTrades(
+      baseCurrency: {is:"INSERT DESIRED CURRENCY ADDRESS HERE"}
+      options: {desc: "trades"}
+    ) {
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+      trades: count
+    }
+  }
+}
+
+=================================
+
+
+2.Get buys over specific time and amount:
+
+Query:
+
+{
+  ethereum(network: DESIRED NETWORK HERE) {
+    transfers(
+      options:{desc:"block.timestamp.time"}
+      currency: {is:"DESIRED TOKEN ADDRESS HERE"}
+      date: {since:"START TIME HERE", till: "END TIME HERE"}
+      amount: {gteq: "DESIRED TOKENS AMOUNT CONSIDERED AS BIG"}KEN HERE"]}
+	  sender: {in: ["THE CORRESPONDING LIQUIDITY PAIR FOR THE DESIRED TOKEN HERE"]}
+    ) {
+      block{
+        timestamp{
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      receiver {
+        address
+      }
+      amount
+      transaction {
+        hash
+        
+      }
+    }
+  }
+}
+
+
+=================================
+
+3.Get sells over specific time and amount:
+
+Query:
+
+{
+  ethereum(network: DESIRED NETWORK HERE) {
+    transfers(
+      options:{desc:"block.timestamp.time"}
+      currency: {is:"DESIRED TOKEN ADDRESS HERE"}
+      date: {since:"START TIME HERE", till: "END TIME HERE"}
+      amount: {gteq: "DESIRED TOKENS AMOUNT CONSIDERED AS BIG"}
+      receiver: {in: ["THE CORRESPONDING LIQUIDITY PAIR FOR THE DESIRED TOKEN HERE"]}
+    ) {
+      block{
+        timestamp{
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      sender {
+        address
+      }
+      amount
+      transaction {
+        hash
+        
+      }
+    }
+  }
+}
