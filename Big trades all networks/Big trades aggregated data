@@ -1,0 +1,62 @@
+{
+  ethereum(network: DESIRED NETWORK NAME) {
+    dexTrades(
+      options: {limit: NUMBER OF RESULTS UP TO 10000, desc: "timeInterval.second"}
+      time:{since:"DESIRED FROM TIME", till:"DESIRED TO TIME"}
+      tradeAmountUsd: {gteq: USD AMOUNT GREATER OR EQUAL THAN DESIRED NUMBER}
+      exchangeAddress: {in: ["DEX1","DEX2","DEX3"]}
+    ) {
+      timeInterval {
+        second
+      }
+      exchange {
+        name
+        address {
+          address
+        }
+      }
+      tradeTransaction: transaction {
+        initiator: txFrom {
+          address
+        }
+        hash
+      }
+      block {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+          unixtime
+        }
+      }
+     
+      buyCurrency {
+        symbol
+        address
+      }
+       buyAmount
+      
+      sellCurrency {
+        symbol
+        address
+      }
+      sellAmount
+      tradeAmountInUsd: tradeAmount(in: USD)
+      poolContract:smartContract {
+         address {
+          address
+        }
+      }
+      makerContract: maker {
+       address
+      }
+      
+      baseCurrency {
+        address
+        symbol
+        decimals
+        tokenType
+      }
+      baseAmount
+      side
+    }
+  }
+}
