@@ -4,8 +4,8 @@ All networks big trades over specific period of time and amount.
 
 In order to get swaps for all the networks you will need 2 queries.
 
-1.Get all of the supported DEXes of the current network.
-2.Get all aggregated data for the sait DEXes.
+1.Get all of the supported DEXes for the current network. Push the addresses into array and then pass them as variable to the "exchangeAddress:" in the second query.
+2.Get all aggregated data for the said DEXes.
 
 For the aggregated data query, "baseCurrency" corresponds to the currency with which user initiates the swap. In other words the currency with which user buys.
 "buyCurrency" and "sellCurrency" are different and can be confusing.
@@ -18,7 +18,7 @@ For the aggregated data query, "baseCurrency" corresponds to the currency with w
 Query:
 
 {
-   ethereum(network: DESIRET NETWORK NAME) {
+   ethereum(network: DESIRED NETWORK NAME) {
     dexTrades(
       options:{
         limitBy:{each:"exchange.fullName",limit:1}
@@ -44,7 +44,7 @@ Query:
 Query:
 
  {
-  ethereum(network: ethereum) {
+  ethereum(network: DESIRED NETWORK NAME) {
     dexTrades(
       options: {limit: NUMBER OF RESULTS UP TO 10000, desc: "timeInterval.second"}
       time:{since:"DESIRED FROM TIME", till:"DESIRED TO TIME"}
