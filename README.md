@@ -83,6 +83,10 @@ In options: {limit: 1, desc: "block.timestamp.time"}
 "desc:" stands for descending order
 
 
+"gt:" means greater than
+"gteq:" means greater or equal than
+
+
 
 DEX names
 =========
