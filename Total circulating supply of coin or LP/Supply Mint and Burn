@@ -1,5 +1,5 @@
 {
-  ethereum(network: bsc) {
+  ethereum(network: DESIRED NETWORK NAME HERE) {
     transfers(date: {since: null, till: null}, amount: {gt: 0}) {
       burned: amount(
         calculate: sum
@@ -9,7 +9,7 @@
         calculate: sum
         sender: {in: ["0x0000000000000000000000000000000000000000"]}
       )
-      currency(currency: {in: ["`+DESIRED COIN ADDRESS VARIABLE HERE+`"]}) {
+      currency(currency: {in: ["DESIRED COIN ADDRESS VARIABLE HERE"]}) {
         symbol
         name
         address
