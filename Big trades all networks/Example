@@ -1,4 +1,4 @@
-Example for data aggregation for all supported DEXes on the Ethereum network for interval of 1 day with 10000 results for trades greater or equal than 10000 $USD.
+Example for data aggregation for all supported DEXes on the Ethereum network for interval of 1 day with maximum of 10000 results for trades greater or equal than 10000 $USD.
 
  {
   ethereum(network: ethereum) {
