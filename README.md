@@ -39,8 +39,7 @@ ethereum(network:celo_baklava) for Celo
 
 
 Filters:
-
-=========================
+=========
 
 
 Currently bitquery don't accept more than 10000 results for 1 query.
