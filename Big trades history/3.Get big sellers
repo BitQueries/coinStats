@@ -1,0 +1,25 @@
+{
+  ethereum(network: DESIRED NETWORK HERE) {
+    transfers(
+      options:{desc:"block.timestamp.time"}
+      currency: {is:"DESIRED TOKEN ADDRESS HERE"}
+      date: {since:"START TIME HERE", till: "END TIME HERE"}
+      amount: {gteq: "DESIRED TOKENS AMOUNT CONSIDERED AS BIG"}
+      receiver: {in: ["THE CORRESPONDING LIQUIDITY PAIR FOR THE DESIRED TOKEN HERE"]}
+    ) {
+      block{
+        timestamp{
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+      }
+      sender {
+        address
+      }
+      amount
+      transaction {
+        hash
+        
+      }
+    }
+  }
+}
