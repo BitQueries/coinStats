@@ -1,7 +1,7 @@
 query {
-  ethereum(network: bsc){
+  ethereum(network: DESIRED NETWORK NAME HERE){
     smartContractEvents(
-      options: {desc:"block.height", limit:100}
+      options: {desc:"block.height", limit:DESIRED LIMIT NUMBER HERE UP TO 10000}
       smartContractEvent: {is: "PairCreated"}){
       
      block {
