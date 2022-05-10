@@ -39,7 +39,7 @@ Query:
 
 {
   ethereum(network: bsc) {
-    address(address: {is: "` + COIN ADDRESS VARIABLE HERE + `"}) {
+    address(address: {is: "COIN ADDRESS VARIABLE HERE"}) {
       balances(currency: {in: ["0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", "0xe9e7cea3dedca5984780bafc599bd69add087d56",
 	  "0x55d398326f99059ff775485246999027b3197955","0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"]}) {
         currency {
@@ -59,7 +59,7 @@ Store the balances in array for further processing.
 =================================================
 
 
-3.Get the current USD price for the respected liquidity token.
+3.Get the current USD/NATIVE CHAIN TOKEN price for the respected liquidity token.
 
 Query:
 
