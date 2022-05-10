@@ -1,10 +1,10 @@
 {
-   ethereum(network: DESIRET NETWORK NAME) {
+   ethereum(network: DESIRED NETWORK NAME) {
     dexTrades(
       options:{
         limitBy:{each:"exchange.fullName",limit:1}
       }
-      date: {since: "DESIRED START DATE"}
+      date: {since: "DESIRED FROM DATE"}
     ) {
       exchange {
         fullName
