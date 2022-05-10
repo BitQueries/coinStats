@@ -23,9 +23,9 @@ Queries:
   ethereum(network: bsc) {
     dexTrades(
       options: {limit: 1, desc: "block.timestamp.time"}
-	  date: {till: "`+INSERT VARIABLE WITH CURRENT TIME HERE+`"}
+	  date: {till: "INSERT VARIABLE WITH CURRENT TIME HERE"}
       exchangeName: {in:  ["Pancake v2"]}
-      baseCurrency: {is: "`+INSERT DESIRED COIN HERE+`"}
+      baseCurrency: {is: "INSERT DESIRED COIN HERE"}
       quoteCurrency: {is: "0x55d398326f99059ff775485246999027b3197955"}
     ) {
       
@@ -67,7 +67,7 @@ Queries:
         calculate: sum
         sender: {in: ["0x0000000000000000000000000000000000000000"]}
       )
-      currency(currency: {in: ["`+DESIRED COIN ADDRESS VARIABLE HERE+`"]}) {
+      currency(currency: {in: ["DESIRED COIN ADDRESS VARIABLE HERE"]}) {
         symbol
         name
         address
