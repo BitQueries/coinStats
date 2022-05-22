@@ -136,7 +136,7 @@ Moralis
 Supported networks: Ethereum, Binance smart chain, Polygon, Avalanche, Fantom
 
 Website: https://admin.moralis.io/
-DOCS: https://docs.moralis.io/introduction/readme
+DOCS: https://docs.moralis.io/moralis-dapp/web3-api/nft-api
 
 ================
 
@@ -238,6 +238,7 @@ Enchanced APIs:
 Multi-chain NFT search - Searches NFTs across multiple chains using a text query, specifically the name and description fields from the metadata. You can think of it like performing a search on Google. It's designed to help you find the one or the most closest NFT results you're looking for. Ethereum and Polygon are supported, including multi-chain search.
 Get NFT recommendations - Use our Recommendations AI API to get visually and contextually similar images to the input image passed with url or uploaded file using state of the art computer vision AI. You can provide recommendations to your users e.g. like Amazon, Netflix so that you can increase revenue or build new AI-based products and experiences for your users.
 Find counterfeit NFTs and verify authenticity of an NFT - Using our Duplicate Detection AI API you can find counterfeits and verify the authenticity of an NFT. Our API analyzes the input image passed with url or uploaded file and returns duplicates (i.e. counterfeits) against it using state of the art computer vision AI.
+
 
 ================================================================================================================================
 
@@ -361,4 +362,3 @@ Sample response for getNFTs API:
     "totalCount": 6,
     "blockHash": "0xeb2d26af5b6175344a14091777535a2cb21c681665a734a8285f889981987630"
 }
-
