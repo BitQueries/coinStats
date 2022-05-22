@@ -1,0 +1,55 @@
+Quicnkode's NFT APIs
+
+Supported networks for NFT data gathering: Ethereum, Solana
+
+Website: https://www.quicknode.com/nft-api
+DOCS: https://www.quicknode.com/docs/ethereum/qn_fetchNFTs
+
+================================
+
+
+Data that can be obtained via quicknode's API:
+
+================
+
+Fetch NFTs data:
+
+owner - The wallet address we checked for NFTs.
+
+assets - An array of objects representing NFTs with the following shape:
+
+name - the name of this specific NFT.
+
+collectionTokenId - the token id of this NFT in its collection.
+
+collectionName - the name of this NFT's collection.
+
+imageUrl - the URL where the image for this NFT can be seen.
+
+collectionAddress - the contract address that this NFT lives in.
+
+traits - an array of traits that this NFT has.
+
+chain - what chain this aggregation happened on.
+
+network - what network this aggregation happened on.
+
+provenance - an array with the transfer history for this NFT.
+
+blockNumber - the block number this transaction was included in.
+
+date - the date when this transaction was mined.
+
+from - the address for the sender of this transaction.
+
+to - the address for the receiver of this transaction.
+
+to - the token transfer transaction hash.
+
+================
+
+Verify NFT owner:
+
+owner - The wallet address we checked for NFTs.
+
+assets - An array of owned NFTs for the the provided wallet, in the same format as the inputted array. If an inputted array isn't returned, then it does not belong to the wallet.
