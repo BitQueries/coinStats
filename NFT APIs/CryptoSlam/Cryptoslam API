@@ -1,0 +1,68 @@
+Cryptoslam NFT API
+
+Website: https://cryptoslam.io/
+DOCS: https://cryptoslam.gitbook.io/docs/developers/cryptoslam-public-api
+
+
+Free APIs of cryptoslam provides data for top100 collections and top100 sales over period of time.
+
+
+
+Enterprise API plan include endpoins for blockchains/collections/fan-tokens/indexes/sales.
+
+According to their website:
+Blockchain endpoint return blockchain-level NFT sales, transaction and buyer count data.
+Collections endpoint return NFT collection information such as sales, transactions, price and volume change, owner count etc.
+Fan-tokens endpoint return fan token information such as price, volume and market cap.
+Global-indexes endpoint return aggregated market data around NFTs, fan tokens and NFT utility tokens.
+Sales endpoint return NFT sales data such as token information, price, transaction and marketplace, buyer and seller, etc.
+
+
+
+I made request for the Enterprise API plan pricing and more detailed information (currently waiting for response).
+
+
+================================
+
+
+Data that can be obtained via their free public APIs:
+
+================
+
+*Timeframes are 24 hours / week / month
+Sales top100 API provides last 100 biggest individual NFT trades along with the following data for the trade:
+
+
+Buyer's address
+Seller's address
+Price spent for the NFT obtain in payment currency and in USD
+Marketplace address
+Marketplace icon
+Marketplace name
+Timestamp (when the trade occurs)
+Transaction hash
+ImageURI
+
+Token data (NFT data):
+
+Attributes (these can vary for different NFTs)
+TokenID
+Image
+Animation (if applicable)
+Name (if applicable)
+more NFT metadata (different for each NFT)
+
+
+================
+
+*Timeframes are 24 hours / week / month
+Collections top100 API provides aggregated such as:
+
+Collection name
+Base currency - the native chain currency (ETH, SOL, AVAX, BNB etc.)
+Total sellers for the selected timeframe
+Total transactions for the selected timeframe
+Price percent change for the selected timeframe
+IconURL of the collection
+Previous  traded volume in the native currncy and in USD.
+Current traded volume in the native currncy and in USD.
