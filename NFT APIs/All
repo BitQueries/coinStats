@@ -6,7 +6,7 @@ DOCS: https://cryptoslam.gitbook.io/docs/developers/cryptoslam-public-api
 
 Free APIs of cryptoslam provides data for top100 collections and top100 sales over period of time.
 
-
+The gathered data is accross all networks.
 
 Enterprise API plan include endpoins for blockchains/collections/fan-tokens/indexes/sales.
 
@@ -190,11 +190,54 @@ Supported networks for NFT data gathering: Ethereum, Polygon
 
 Website: https://www.nftport.xyz/
 DOCS: https://docs.nftport.xyz/docs/nftport/ZG9jOjE5MzA4MjIy-welcome-to-nft-port-the-stripe-for-nf-ts
+Open API: https://api.nftport.xyz/openapi.json
 
 
+Data that can be obtained via NFTport APIs:
+
+================
+
+Multichain NFT data:
+
+NFTs owned by an account/wallet
+NFTs from a contract
+Details of an NFT
+All NFTs
+
+Retrieve all NFTs - Returns all ERC721 and ERC1155 NFTs that have been minted on a given chain. Ethereum and Polygon are supported.
+Retrieve NFT details - Returns details for a given NFT. These include metadata_url, metadata such as name, description, attributes, etc., image_url, cached_image_url and mint_date. Ethereum and Polygon are supported.
+Retrieve contract NFTs - Returns all NFTs for a given contract address. Can be set to include the NFT metadata or all which returns extra information. Ethereum and Polygon are supported.
+Retrieve NFTs owned by an account - Returns NFTs owned by a given account (i.e. wallet) address. Can also return each NFT metadata with include parameter.
+Retrieve NFTs created by an account - Returns NFTs created (i.e. minted) by a given account (i.e. wallet) address. Can also return each NFT metadata with include parameter. Ethereum mainnet is supported.
+Retrieve transactions by an account - Returns all on-chain transactions as well as OpenSea and Rarible order book data for the specified account (i.e. wallet) address. Can be set to include transactions such as mint, burn, transfer_from, transfer_to, list, buy, sell and OpenSea order book data such as make_bid and get_bid, or all which includes all transactions. Ethereum mainnet is supported.
+Retrieve transactions by NFT - Returns all on-chain transactions as well as OpenSea and Rarible order book data for the specified NFT token. Can be set to include transactions such as transfer, burn, mint, bid, list and sale, or all which includes all transactions. Ethereum mainnet is supported.
+Retrieve transactions by contract - Returns all on-chain transactions as well as OpenSea and Rarible order book data for the specified contract. Can be set to include transactions such as transfer, burn, mint, bid, list and sale, or all which includes all transactions. Ethereum mainnet is supported.
+Retrieve contract sales statistics - Retrieve in-depth sales statistics about a contract from OpenSea. Includes statistics such as floor price, total volume, sales, etc. Updated with 1-hour interval.
+Retrieve reports on NFTs data - High-level statistics about URIs linked by NFTs metadata. Currently supported URIs are: metadata, image and animation. Ethereum is supported.
 
 
+================
 
+Minting, ontracts and storage:
+
+Retrieve a deployed contract
+Retrieve a minted NFT
+Retrieve batch minted NFTs
+List all your deployed collection contracts
+User settings
+List all your minted NFTs
+List all your IPFS uploads
+List all your deployed contracts
+
+There are also alot of POST APIs in these section for NFT creation and interaction.
+
+
+================
+
+Enchanced APIs:
+Multi-chain NFT search - Searches NFTs across multiple chains using a text query, specifically the name and description fields from the metadata. You can think of it like performing a search on Google. It's designed to help you find the one or the most closest NFT results you're looking for. Ethereum and Polygon are supported, including multi-chain search.
+Get NFT recommendations - Use our Recommendations AI API to get visually and contextually similar images to the input image passed with url or uploaded file using state of the art computer vision AI. You can provide recommendations to your users e.g. like Amazon, Netflix so that you can increase revenue or build new AI-based products and experiences for your users.
+Find counterfeit NFTs and verify authenticity of an NFT - Using our Duplicate Detection AI API you can find counterfeits and verify the authenticity of an NFT. Our API analyzes the input image passed with url or uploaded file and returns duplicates (i.e. counterfeits) against it using state of the art computer vision AI.
 
 
 
