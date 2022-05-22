@@ -132,10 +132,15 @@ assets - An array of owned NFTs for the the provided wallet, in the same format 
 
 Moralis
 
+
+Supported networks: Ethereum, Binance smart chain, Polygon, Avalanche, Fantom
+
 Website: https://admin.moralis.io/
 DOCS: https://docs.moralis.io/introduction/readme
 
 ================
+
+*There may be few queries required made to gather comprehensive data.
 
 Data that can be obtained via Moralis APIs:
 
