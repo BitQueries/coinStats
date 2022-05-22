@@ -1,0 +1,43 @@
+Moralis
+
+Website: https://admin.moralis.io/
+DOCS: https://docs.moralis.io/introduction/readme
+
+================
+
+Data that can be obtained via Moralis APIs:
+
+
+/{address}/nft - Gets the NFTs owned by a given address
+/nft/{address}/ - tradesGet nft trades by marketplaces
+/nft/{address}/lowestprice - Get the lowest price found for a nft token contract
+/nft/search Retrieves the NFT data based on a metadata search
+/nft/transfers - Gets NFT transfers from a block number to a block number
+/nft/{address} - Retrieves the unique NFTs inside a given contract
+/nft/{address}/transfers - Gets NFT transfers of a given contract
+/nft/{address}/owners - Gets the owners of the NFTs of a given contract
+/nft/{address}/metadata - Gets the global metadata for a given contract
+/nft/{address}/{token_id}/metadata/resync - resync the metadata for a given token_id
+/nft/{address}/sync - Sync a Contract for NFT Index
+/nft/{address}/{token_id} - Gets the NFT with the given id of a given contract
+/nft/{address}/{token_id}/owners - Gets the owners of NFTs for a given contract
+/nft/{address}/{token_id}/transfers - Gets NFT transfers of a given contract
+
+
+There is alot of extra data gathered with each request. 
+Example for /nft/{address}/owners:
+
+"token_address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+"token_id": "15",
+"contract_type": "ERC721",
+"owner_of": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+"block_number": "88256",
+"block_number_minted": "88256",
+"token_uri": "string",
+"metadata": "string",
+"synced_at": "string",
+"last_token_uri_sync": "string",
+"last_metadata_sync": "string",
+"amount": "1",
+"name": "CryptoKitties",
+"symbol": "RARI"
