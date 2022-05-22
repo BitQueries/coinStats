@@ -1,0 +1,195 @@
+Cryptoslam NFT API
+
+Website: https://cryptoslam.io/
+
+
+
+Free APIs of cryptoslam provides data for top100 collections and top100 sales over period of time.
+
+
+
+Enterprise API plan include endpoins for blockchains/collections/fan-tokens/indexes/sales.
+
+According to their website:
+Blockchain endpoint return blockchain-level NFT sales, transaction and buyer count data.
+Collections endpoint return NFT collection information such as sales, transactions, price and volume change, owner count etc.
+Fan-tokens endpoint return fan token information such as price, volume and market cap.
+Global-indexes endpoint return aggregated market data around NFTs, fan tokens and NFT utility tokens.
+Sales endpoint return NFT sales data such as token information, price, transaction and marketplace, buyer and seller, etc.
+
+
+
+I made request for the Enterprise API plan pricing and more detailed information (currently waiting for response).
+
+
+================================
+
+
+Data that can be obtained via their free public APIs:
+
+================
+
+*Timeframes are 24 hours / week / month
+Sales top100 API provides last 100 biggest individual NFT trades along with the following data for the trade:
+
+
+Buyer's address
+Seller's address
+Price spent for the NFT obtain in payment currency and in USD
+Marketplace address
+Marketplace icon
+Marketplace name
+Timestamp (when the trade occurs)
+Transaction hash
+ImageURI
+
+Token data (NFT data):
+
+Attributes (these can vary for different NFTs)
+TokenID
+Image
+Animation (if applicable)
+Name (if applicable)
+more NFT metadata (different for each NFT)
+
+
+================
+
+*Timeframes are 24 hours / week / month
+Collections top100 API provides aggregated such as:
+
+Collection name
+Base currency - the native chain currency (ETH, SOL, AVAX, BNB etc.)
+Total sellers for the selected timeframe
+Total transactions for the selected timeframe
+Price percent change for the selected timeframe
+IconURL of the collection
+Previous  traded volume in the native currncy and in USD.
+Current traded volume in the native currncy and in USD.
+
+
+================================================================================================================================
+
+Quicnkode's NFT APIs
+
+Supported networks for NFT data gathering: Ethereum, Solana
+
+Website: https://www.quicknode.com/nft-api
+DOCS: https://www.quicknode.com/docs/ethereum/qn_fetchNFTs
+
+================================
+
+
+Data that can be obtained via quicknode's API:
+
+================
+
+Fetch NFTs data:
+
+owner - The wallet address we checked for NFTs.
+
+assets - An array of objects representing NFTs with the following shape:
+
+name - the name of this specific NFT.
+
+collectionTokenId - the token id of this NFT in its collection.
+
+collectionName - the name of this NFT's collection.
+
+imageUrl - the URL where the image for this NFT can be seen.
+
+collectionAddress - the contract address that this NFT lives in.
+
+traits - an array of traits that this NFT has.
+
+chain - what chain this aggregation happened on.
+
+network - what network this aggregation happened on.
+
+provenance - an array with the transfer history for this NFT.
+
+blockNumber - the block number this transaction was included in.
+
+date - the date when this transaction was mined.
+
+from - the address for the sender of this transaction.
+
+to - the address for the receiver of this transaction.
+
+to - the token transfer transaction hash.
+
+================
+
+Verify NFT owner:
+
+owner - The wallet address we checked for NFTs.
+
+assets - An array of owned NFTs for the the provided wallet, in the same format as the inputted array. If an inputted array isn't returned, then it does not belong to the wallet.
+
+
+================================================================================================================================
+
+
+Moralis
+
+Website: https://admin.moralis.io/
+DOCS: https://docs.moralis.io/introduction/readme
+
+================
+
+Data that can be obtained via Moralis APIs:
+
+
+/{address}/nft - Gets the NFTs owned by a given address
+/nft/{address}/ - tradesGet nft trades by marketplaces
+/nft/{address}/lowestprice - Get the lowest price found for a nft token contract
+/nft/search Retrieves the NFT data based on a metadata search
+/nft/transfers - Gets NFT transfers from a block number to a block number
+/nft/{address} - Retrieves the unique NFTs inside a given contract
+/nft/{address}/transfers - Gets NFT transfers of a given contract
+/nft/{address}/owners - Gets the owners of the NFTs of a given contract
+/nft/{address}/metadata - Gets the global metadata for a given contract
+/nft/{address}/{token_id}/metadata/resync - resync the metadata for a given token_id
+/nft/{address}/sync - Sync a Contract for NFT Index
+/nft/{address}/{token_id} - Gets the NFT with the given id of a given contract
+/nft/{address}/{token_id}/owners - Gets the owners of NFTs for a given contract
+/nft/{address}/{token_id}/transfers - Gets NFT transfers of a given contract
+
+
+There is alot of extra data gathered with each request. 
+Example for /nft/{address}/owners:
+
+"token_address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+"token_id": "15",
+"contract_type": "ERC721",
+"owner_of": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+"block_number": "88256",
+"block_number_minted": "88256",
+"token_uri": "string",
+"metadata": "string",
+"synced_at": "string",
+"last_token_uri_sync": "string",
+"last_metadata_sync": "string",
+"amount": "1",
+"name": "CryptoKitties",
+"symbol": "RARI"
+
+
+
+
+================================================================================================================================
+
+NFTport
+
+Supported networks for NFT data gathering: Ethereum, Polygon
+
+Website: https://www.nftport.xyz/
+DOCS: https://docs.nftport.xyz/docs/nftport/ZG9jOjE5MzA4MjIy-welcome-to-nft-port-the-stripe-for-nf-ts
+
+
+
+
+
+
+
+
