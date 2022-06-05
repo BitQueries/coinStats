@@ -1,0 +1,140 @@
+In order to get historical liquidity pair balances we will use 2 queries:
+
+
+===========================================================
+
+
+
+1st. Get liquidity pair/pairs for chosen coin.
+
+========================
+
+Query:
+
+
+query  {  
+  ethereum(network: NETWORK NAME) {
+    dexTrades(
+      baseCurrency: {in:["coin1","coin2","etc."]}
+      options: {desc: "trades"}
+    ) {
+      baseCurrency{
+        name
+        symbol
+        address
+      }
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+     trades:count
+    }
+  }
+}
+
+
+===========================================================
+
+
+2nd. Get liquidity pair balances for chosen time period.
+
+========================
+
+
+Query:
+
+Filter by block number
+
+
+{
+  ethereum(network: NETWORK NAME) {
+    address(address: {in: ["COIN1","COIN2","ETC."]}) {
+      balances(height: {gteq: CHOSEN BLOOCK NUMBER, lteq: SAME CHOSEN BLOCK NUMBER OR 1 BLOCK GREATER}) {
+        currency {
+          symbol
+          name
+          address
+        }
+        value
+      }
+    }
+  }
+}
+
+==================
+
+Filter by date
+
+
+{
+  ethereum(network: NETWORK NAME) {
+    address(address: {in: ["COIN1","COIN2","ETC."]}) {
+      balances(time: {since: "CHOSEN TIME IN ISO8601 FORMAT", till: "SAME CHOSEN TIME IN ISO8601 FORMAT"}) {
+        currency {
+          symbol
+          name
+          address
+        }
+        value
+      }
+    }
+  }
+}
+
+===========================================================
+
+Legend:
+
+==================
+
+
+Networks:
+
+In order to fetch result for the desired network, parameter after "network:" field must be changed respectively as follows:
+
+ethereum(network:bsc) for Binance smart chain
+
+ethereum(network:ethereum) for Ethereum
+
+ethereum(network:avalanche) for Avalanche
+
+ethereum(network:matic) for Polygon
+
+ethereum(network:fantom) for Fantom
+
+ethereum(network:ethclassic) for Ethereum classic
+
+ethereum(network:velas) for Velas
+
+ethereum(network:klaytn) for Klaytn
+
+ethereum(network:celo_baklava) for Celo
+
+
+==================
+
+*For the above specific queries is recommended to use both since: and till: filters.
+
+
+In "date:" - "since:" and "till:" additional filters can be applied for more precise results, one of them can be omitted (depends on desired results). date:{since: "ISO8601 time", till: "ISO8601 time"}
+
+If you omit "since:" it will fetch all aggregated results to desired time:
+
+date:{till: "ISO8601 time"}
+
+OR omit "till:" to get results from desired time till last record time:
+
+date:{since: "ISO8601 time"}
+
+
+
+==================
+
+Difference between "is:" and "in:" filters is - one is used for single address and the other is used for multiple (array) addresses.
+However "in:" filter can be used in both ways, for single and multiple addresses.
+
+When you want to get data for single address you can use either is:"address" or in:["address"] syntax.
+When you want to get data for multiple addresses you mus use ONLY in:["address1","address2","etc."] syntax.
+
+
