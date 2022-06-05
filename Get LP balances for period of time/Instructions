@@ -12,7 +12,7 @@ In order to get historical liquidity pair balances we will use 2 queries:
 Query:
 
 
-query  {  
+{  
   ethereum(network: NETWORK NAME) {
     dexTrades(
       baseCurrency: {in:["coin1","coin2","etc."]}
