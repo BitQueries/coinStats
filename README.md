@@ -80,6 +80,12 @@ In options: {limit: 1, desc: "block.timestamp.time"}
 "gt:" means greater than
 "gteq:" means greater or equal than
 
+Difference between "is:" and "in:" filters is - one is used for single address and the other is used for multiple (array) addresses.
+However "in:" filter can be used in both ways, for single and multiple addresses.
+
+When you want to get data for single address you can use either is:"address" or in:["address"] syntax.
+When you want to get data for multiple addresses you mus use ONLY in:["address1","address2","etc."] syntax.
+
 
 
 DEX names
