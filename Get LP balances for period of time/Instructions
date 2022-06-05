@@ -43,6 +43,8 @@ query  {
 
 Filter by date
 
+Query:
+
 
 {
   ethereum(network: NETWORK NAME) {
@@ -64,12 +66,10 @@ Filter by date
 OR
 ==================
 
-Filter by block number
 
+Filter by block number
 
 Query:
-
-Filter by block number
 
 
 {
