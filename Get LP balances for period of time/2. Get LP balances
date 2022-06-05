@@ -1,0 +1,41 @@
+Filtered by block number
+========================
+
+Query:
+
+{
+  ethereum(network: NETWORK NAME) {
+    address(address: {in: ["COIN1","COIN2","ETC."]}) {
+      balances(height: {gteq: CHOSEN BLOOCK NUMBER, lteq: SAME CHOSEN BLOCK NUMBER OR 1 BLOCK GREATER}) {
+        currency {
+          symbol
+          name
+          address
+        }
+        value
+      }
+    }
+  }
+}
+
+===========================================================
+
+Filtered by time
+========================
+
+Query:
+
+{
+  ethereum(network: NETWORK NAME) {
+    address(address: {in: ["COIN1","COIN2","ETC."]}) {
+      balances(time: {since: "CHOSEN TIME IN ISO8601 FORMAT", till: "SAME CHOSEN TIME IN ISO8601 FORMAT"}) {
+        currency {
+          symbol
+          name
+          address
+        }
+        value
+      }
+    }
+  }
+}
