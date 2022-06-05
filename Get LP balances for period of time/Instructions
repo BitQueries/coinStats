@@ -41,6 +41,31 @@ query  {
 
 ========================
 
+Filter by date
+
+
+{
+  ethereum(network: NETWORK NAME) {
+    address(address: {in: ["COIN1","COIN2","ETC."]}) {
+      balances(time: {since: "CHOSEN TIME IN ISO8601 FORMAT", till: "SAME CHOSEN TIME IN ISO8601 FORMAT"}) {
+        currency {
+          symbol
+          name
+          address
+        }
+        value
+      }
+    }
+  }
+}
+
+
+==================
+OR
+==================
+
+Filter by block number
+
 
 Query:
 
@@ -62,25 +87,8 @@ Filter by block number
   }
 }
 
-==================
-
-Filter by date
 
 
-{
-  ethereum(network: NETWORK NAME) {
-    address(address: {in: ["COIN1","COIN2","ETC."]}) {
-      balances(time: {since: "CHOSEN TIME IN ISO8601 FORMAT", till: "SAME CHOSEN TIME IN ISO8601 FORMAT"}) {
-        currency {
-          symbol
-          name
-          address
-        }
-        value
-      }
-    }
-  }
-}
 
 ===========================================================
 
