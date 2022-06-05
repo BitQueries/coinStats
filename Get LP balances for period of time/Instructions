@@ -94,7 +94,30 @@ Query:
 
 Legend:
 
+====================================
+
+baseCurrency{
+        name
+        symbol
+        address
+      }
+      
+ returns requested data (name,symbol,address) for the requested token
+
+
 ==================
+
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+
+returns the liquidity pair address of the baseCurrency token
+
+
+====================================
+
 
 
 Networks:
