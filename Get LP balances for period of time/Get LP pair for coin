@@ -1,0 +1,19 @@
+query  {  
+  ethereum(network:NETWORK NAME HERE) {
+    dexTrades(
+      baseCurrency: {in:["coin1","coin2","etc."]}
+    ) {
+      baseCurrency{
+        name
+        symbol
+        address
+      }
+      poolToken: smartContract {
+        address {
+          address
+        }
+      }
+     trades:count
+    }
+  }
+}
